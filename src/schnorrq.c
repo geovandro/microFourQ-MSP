@@ -162,9 +162,7 @@ ECCRYPTO_STATUS SchnorrQ_Verify(const unsigned char* PublicKey, const unsigned c
 
     if (CryptoHashFunction(temp, SizeMessage+64, h) != 0) {   
         Status = ECCRYPTO_ERROR;
-#ifndef BENCH_VERIFY // Do not go to cleanup when benchmarking, this is just for benchmarking purposes
         goto cleanup;
-#endif
     }
 
     Status = ecc_mul_double((digit_t*)(Signature+32), A, (digit_t*)h, A);      
@@ -176,11 +174,7 @@ ECCRYPTO_STATUS SchnorrQ_Verify(const unsigned char* PublicKey, const unsigned c
 
     for (i = 0; i < NWORDS_ORDER; i++) {
         if (((digit_t*)A)[i] != ((digit_t*)Signature)[i]) {
-#ifndef BENCH_VERIFY // Do not go to cleanup when benchmarking, this is just for benchmarking purposes          
             goto cleanup;
-#else // Benchmarking: do whatever to count the time of the ifs
-        h[i] ^= Signature[i]; 
-#endif            
         }
     }
     *valid = true;

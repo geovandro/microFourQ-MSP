@@ -29,7 +29,7 @@ bool ecc_test()
 
     // Point doubling
     passed = 1;
-/*
+
     eccset(A); 
     point_setup(A, P);
 
@@ -177,12 +177,10 @@ bool ecc_test()
     }   
     if (passed==0) return false;
     }
-//*/
-/* 
+ 
     }
 #endif
-//*/
-/*
+
     // Scalar multiplication
     eccset(A); 
     clear_cofactor = false;
@@ -217,8 +215,7 @@ bool ecc_test()
     res_y[0] = 0x35FFAD6E8F0681DC; res_y[1] = 0x681067510F99389E; res_y[2] = 0xA4BE7A70A1820895; res_y[3] = 0x34C0A821F434D672;
     if (fp2compare64((uint64_t*)A->x, res_x)!=0 || fp2compare64((uint64_t*)A->y, res_y)!=0) passed=0;
     if (passed==0) return false;
-//*/    
-//*
+
     {    
     point_t AA, B, C; 
     unsigned int j, w, v, e, d;
@@ -251,15 +248,12 @@ bool ecc_test()
         random_scalar_test(scalar); 
         ecc_mul_fixed((digit_t*)scalar, B);
         ecc_mul(AA, (digit_t*)scalar, C, false);
-        //ecc_mul(AA, (digit_t*)scalar, C, true); // benchmark all DH
-        //decode((unsigned char*) scalar, C);// benchmark memory of compressed DH 32 bytes
         
         if (fp2compare64((uint64_t*)B->x,(uint64_t*)C->x)!=0 || fp2compare64((uint64_t*)B->y,(uint64_t*)C->y)!=0) { passed=0; break; }
     }
     if (passed==0) return false; 
     }
-//*/	
-/*
+
     {    
     point_t PP, QQ, RR, UU, TT; 
     point_extproj_precomp_t AA;
@@ -295,7 +289,7 @@ bool ecc_test()
     }
     if (passed==0) return false;
     }
-//*/
+
     return OK;
 }
 

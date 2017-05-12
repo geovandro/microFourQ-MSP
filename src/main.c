@@ -11,9 +11,9 @@ int main( void )
   bool OK = true;
   
 
-  //OK = OK && fp_tests();
+  OK = OK && fp_tests();
  
-  //OK = OK && ecc_tests();
+  OK = OK && ecc_tests();
 
   OK = OK && crypto_tests();
 
