@@ -1,0 +1,47 @@
+////////////////////////////////////////////////////////////////////////////////
+// Multiprecision addition of two UINT16 arrays r = a + b                     //
+//                                                                            //
+// Authors: Hwajeong Seo                                                      //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME mp_add            ; module name
+PUBLIC mp_add          ; make the main label vissible outside this module
+RSEG CODE              ; place program in 'CODE' segment
+
+#define LEN R15
+#define RPTR R14
+
+#define BPTR R13
+#define APTR R12
+
+#define SUM R11
+#define CARRY R10
+
+mp_add:
+    
+    PUSH.W SUM
+    PUSH.W CARRY
+    
+    ADD  LEN, LEN
+    CLR  CARRY              ; clear CARRY register
+    
+LOOP:
+    MOV  @APTR+, SUM        ; load a[i] to SUM
+    RRA  CARRY              ; restore carry flag; CARRY register is now 0
+    ADDC @BPTR+, SUM        ; add b[i] with carry to a[i]
+    ADC  CARRY              ; save the carry flag in CARRY register
+    MOV  SUM, 0(RPTR)       ; write sum to r[i]
+    ADD  #2, RPTR           ; increment R pointer (carry flag gets modified!)
+    DEC  LEN                ; decrement len
+    JNZ  LOOP               ; jump to 'LOOP' if not 0
+    
+    MOV  CARRY, R12         ; return carry bit (is either 0 or 1)
+    
+    POP  CARRY
+    POP  SUM
+    
+    RETA
+    
+END

@@ -1,0 +1,99 @@
+////////////////////////////////////////////////////////////////////////////////
+// Fast Reduction of a 8-word (not double-precision) UINT16 array             // 
+// c = c mod 2^127-1                                                          //
+//                                                                            //
+// Authors: Zhe Liu, Hwajeong Seo                                             //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME mod1271            ; module name
+PUBLIC mod1271          ; make the main label vissible outside this module
+RSEG CODE               ; place program in 'CODE' segment
+
+#define A7 R15
+#define A6 R14
+#define A5 R13
+#define APTR R12
+#define A4 R11
+#define A3 R10
+#define A2 R9
+#define A1 R8
+#define A0 R7
+#define TMP1 R6
+#define TMP0 R5
+
+
+mod1271:
+    PUSH.W TMP0
+    PUSH.W TMP1
+    PUSH.W A0
+    PUSH.W A1
+    PUSH.W A2
+    PUSH.W A3    
+    PUSH.W A4
+
+    MOV @APTR+, A0
+    MOV @APTR+, A1
+    MOV @APTR+, A2
+    MOV @APTR+, A3
+    
+    MOV @APTR+, A4
+    MOV @APTR+, A5
+    MOV @APTR+, A6
+    MOV @APTR+, A7
+
+    
+    MOV A7, TMP0
+    CLR TMP1
+    ADD TMP0, TMP0
+    ADC TMP1
+    
+    AND #0X7FFF, A7
+    
+    ADD TMP1, A0
+    ADC A1
+    ADC A2
+    ADC A3
+    
+    ADC A4
+    ADC A5
+    ADC A6
+    ADC A7
+    
+    MOV A7, TMP0
+    CLR TMP1
+    ADD TMP0, TMP0
+    ADC TMP1
+    
+    ADD TMP1, A0
+    ADC A1
+    ADC A2
+    ADC A3
+    
+    ADC A4
+    ADC A5
+    ADC A6
+    ADC A7
+    
+    MOV A0, -16(APTR)
+    MOV A1, -14(APTR)
+    MOV A2, -12(APTR)
+    MOV A3, -10(APTR)
+    
+    MOV A4, -8(APTR)
+    MOV A5, -6(APTR)
+    MOV A6, -4(APTR)
+    MOV A7, -2(APTR)
+    
+    POP  A4
+    POP  A3
+    POP  A2
+    POP  A1
+    POP  A0    
+    POP TMP1
+    POP TMP0
+    
+    RETA
+    
+END

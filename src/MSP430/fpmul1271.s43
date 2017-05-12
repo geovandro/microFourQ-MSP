@@ -1,0 +1,538 @@
+////////////////////////////////////////////////////////////////////////////////
+// Modular multiplication using the product-scanning method                   // 
+// c = a * b mod 2^127-1   uses the hardware multiplier                       //
+//                                                                            //
+// Authors: Zhe Liu, Geovandro Pereira and Hwajeong Seo                       //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME fpmul1271            ; module name
+PUBLIC fpmul1271          ; make the main label vissible outside this module
+RSEG CODE                 ; place program in 'CODE' segment
+
+
+#define CARRY R15
+; R12 -- the starting address of array 'a'
+#define APTR R12
+; R13 -- the starting address of array 'b'
+#define BPTR R13
+; R14 -- the starting address of array 'r'
+#define RPTR R14
+
+
+#define A7 R15
+#define A6 R14
+#define RPTR2 R13
+#define APTR2 R12
+#define A5 R11
+#define A4 R10
+#define A3 R9
+#define A2 R8
+#define A1 R7
+#define A0 R6
+#define TMP0 R5
+
+
+
+//256 * 256 = 512 : 512/8=66
+//save several variables
+
+fpmul1271: ; NOP                           ; main program
+           ; MOV #WDTPW+WDTHOLD,&WDTCTL    ; stop watchdog timer
+        
+    PUSH.W TMP0    
+    PUSH.W A0
+    PUSH.W A1
+    PUSH.W A2
+    PUSH.W A3    
+    PUSH.W A4
+    PUSH.W A5
+    
+    
+    //REAL RESULT
+    
+    PUSH.W RPTR
+    SUB #66, R1
+    MOV R1, RPTR
+    
+    
+    // push callee-saved registers on stack
+    
+    ; a[0 - 7]
+    ; b[0 - 7]
+    
+    ; Notice that for the HW multiplier to operation to be performed dependes on which register the first operand is put in.
+    ; There are 3 possibilities: MPY, MPYS, and MAC
+    ; Multiplication of unsigned 8-bit and 16-bit operands (MPY)
+    ; Multiplication of signed 8-bit and 16-bit operands (MPYS)
+    ; Multiply-and-accumulate function (MAC) allows for unsigned 8-bit and 16-bit operands
+    ;   MAC mode: multiply the 2 given operands and adds the result with the previous result already stored in RESHI:RESLO
+   
+    //1
+    MOV  @APTR, &MPY        ; load a[0] to the first operand           
+    MOV  @BPTR+ , &OP2      ; load b[0] to the second operand
+                            ; Product c[0] = a[0]*b[0] being computed at this point
+    
+    MOV  &RESLO, 0(RPTR)    ; r[0] <- (a[0]*b[0])[0]
+    MOV  &RESHI, &RESLO     ; RESLO <- (a[0]*b[0])[1]
+    CLR  &RESHI             ; RESHI <- 0
+    
+    //2
+    MOV  @APTR+, &MAC       ; load a[0] to the first operand   
+    MOV  @BPTR, &OP2        ; load b[1] to the second operand        
+                            ; Product and sum c = a[0]*b[1] + (a[0]*b[0])[1] being computed at this point
+                            ; notice that a[0]b[1][1] includes the carry from a[0]b[1][0]+a[0]b[0][1] in the end
+    SUB  #2, BPTR
+    MOV  @APTR,  &MAC       ; load a[1] to the first operand   
+    MOV  @BPTR+, &OP2       ; load b[0] to the second operand
+                            ; Product and sum c = a[1]*b[0] + (a[0]*b[1] + (a[0]*b[0])[1]) being computed at this point
+                            ; Now RESHI = a[0]b[1][1] + a[1]b[0][1] + Carries
+                            ; Now RESHLO contains c[1]
+    
+    MOV  &RESLO, 2(RPTR)    ; c[1]
+    MOV  &RESHI,  &RESLO    
+    MOV  &SUMEXT, &RESHI
+    
+    //3
+    MOV  @BPTR+, &OP2       ; load b[1] to the second operand
+                            ; a[1]*b[1] + Carries takes place
+    SUB  #2, APTR
+    MOV  &SUMEXT, CARRY     ; Carry gets part of the total carry for the fifth word c[4]
+    
+    MOV  @APTR+,  &MAC      ; load a[0] to the first operand           
+    MOV  @BPTR,   &OP2      ; load b[2] to the second operand
+    SUB  #4, BPTR
+    ADD  #2, APTR
+    ADD  &SUMEXT, CARRY     ; Carry accumulates part of the total carry for the fifth word c[4]
+    
+    
+    MOV  @APTR+,  &MAC      ; load a[2] to the first operand           
+    MOV  @BPTR+,  &OP2      ; load b[0] to the second operand
+                            ; Now RESLO gets the final c[2]
+    MOV  &RESLO, 4(RPTR)    ; c[2]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to the lower 16-bit register
+    ADD  &SUMEXT, CARRY     ; Carry accumulates the last part of the total carry for the fifth word c[4]   
+    MOV  CARRY, &RESHI
+    
+    //4        
+    MOV  @BPTR, &OP2        ; load b[1] to the second operand
+                            ; a[2]*b[1] + Carries takes place
+    SUB  #2, BPTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[3] to the first operand   
+    MOV  @BPTR+, &OP2       ; load b[0] to the second operand               
+    SUB  #4, APTR        
+    ADD  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[1] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[2] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+   
+    MOV  @APTR+,  &MAC      ; load a[0] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[3] to the second operand
+    MOV  &RESLO, 6(RPTR)    ; c[3]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+    
+    //5                 
+    MOV  @BPTR, &OP2        ; load b[4] to the second operand
+    SUB  #2, BPTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[1] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[3] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[2] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[2] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[3] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[1] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[4] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[0] to the second operand
+      
+    MOV  &RESLO, 8(RPTR)    ; c[4]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+    
+    //6
+    MOV  @APTR,  &MAC       ; load a[5] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[0] to the second operand
+    SUB  #2, APTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC        ; load a[4] to the first operand           
+    MOV  @BPTR+, &OP2        ; load b[1] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC        ; load a[3] to the first operand           
+    MOV  @BPTR+, &OP2        ; load b[2] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[2] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[3] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[1] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[4] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+      
+    MOV  @APTR+,  &MAC      ; load a[0] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[5] to the second operand
+    
+    MOV  &RESLO, 10(RPTR)   ; c[5]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+    
+    //7        
+    MOV  @BPTR, &OP2        ; load b[6] to the second operand
+    SUB  #2, BPTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[1] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[5] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[2] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[4] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[3] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[3] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[4] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[2] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[5] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[1] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[6] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[0] to the second operand
+
+    MOV  &RESLO, 12(RPTR)   ; c[6]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+    
+    //8
+    MOV  @BPTR, &OP2        ; load b[1] to the second operand
+    SUB  #2, BPTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[7] to the first operand     
+    MOV  @BPTR+, &OP2       ; load b[0] to the second operand
+    SUB  #4, APTR
+    ADD  #2, BPTR
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC        ; load a[5] to the first operand           
+    MOV  @BPTR+, &OP2        ; load b[2] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[4] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[3] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[3] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[4] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[2] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[5] to the second operand       
+    SUB  #4, APTR        
+    ADD  #2, BPTR
+    ADD  &SUMEXT, CARRY
+
+    MOV  @APTR+,  &MAC      ; load a[0] to the first operand   
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand        
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[1] to the first operand     
+    MOV  @BPTR+, &OP2       ; load b[6] to the second operand
+    
+    MOV  &RESLO, 14(RPTR)   ; c[7]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+            
+    //9        
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand
+    SUB  #2, BPTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[2] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[6] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[3] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[5] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[4] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[4] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[5] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[3] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[6] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[2] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[7] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[1] to the second operand
+    
+    MOV  &RESLO, A0         ; c[8]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+            
+    //10       
+    MOV  @BPTR+, &OP2       ; load b[2] to the second operand
+    SUB  #2, APTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[6] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[3] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[5] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[4] to the second operand
+    SUB  #2, APTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[4] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[5] to the second operand
+
+    SUB  #4, APTR        
+    ADD  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[2] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand      
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[3] to the first operand     
+    MOV  @BPTR+, &OP2       ; load b[6] to the second operand
+    
+    MOV  &RESLO, A1         ; c[9]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+            
+    //11          
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand
+    SUB  #2, BPTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[4] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[6] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[5] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[5] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[6] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[4] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[7] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[3] to the second operand
+    
+    MOV  &RESLO, A2         ; c[10]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+            
+    
+    //12       
+    MOV  @BPTR+, &OP2       ; load b[4] to the second operand
+    SUB  #2, APTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[6] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[5] to the second operand    
+    SUB  #4, APTR
+    ADD  #2, BPTR
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[4] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand     
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[5] to the first operand     
+    MOV  @BPTR+, &OP2       ; load b[6] to the second operand
+    
+    MOV  &RESLO, A3   ; c[11]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+            
+    //13        
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand
+    SUB  #2, BPTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[6] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[6] to the second operand
+    SUB  #2, BPTR        
+    ADD  &SUMEXT, CARRY
+    
+    MOV  @APTR,  &MAC       ; load a[7] to the first operand           
+    MOV  @BPTR+, &OP2       ; load b[5] to the second operand
+    
+    MOV  &RESLO, A4         ; c[12]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+            
+    //14        
+    MOV  @BPTR+, &OP2       ; load b[6] to the second operand
+    SUB  #2, APTR
+    MOV  &SUMEXT, CARRY
+    
+    MOV  @APTR+,  &MAC      ; load a[6] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand
+    
+    MOV  &RESLO, A5         ; c[13]
+    MOV  &RESHI,  &RESLO    ; load the upper 16-bit to be part of the lower 16-bit
+    ADD  &SUMEXT, CARRY        
+    MOV  CARRY, &RESHI
+            
+              
+    //15
+    MOV  @APTR, &MAC        ; load a[7] to the first operand           
+    MOV  @BPTR, &OP2        ; load b[7] to the second operand
+    
+    
+    MOV  &RESLO, 28(RPTR)   ; c[14]
+    MOV  &RESHI, 30(RPTR)   ; c[15]
+    
+    
+    /////////MODULAR 
+    MOV RPTR, APTR2
+    ADD #66, R1
+    POP RPTR2
+        
+        
+    // before second..
+    // The unreduced multiplication is c = cH*2^127 +cL. and we now have c = (c[15],c[14],...c[8], c[7],c[6],...c[0])
+    // Notice that the MSB of c[7] is the LSB of cH so let's put it in the right place by left shifting (c15,..,c8) by 1 and leave room for that bit
+    
+    ADD #14, APTR2 //APTR2 = c[7]
+    
+    CLR TMP0
+    MOV @APTR2+, 14(RPTR2)    ; *RPTR2 = &c[7]
+     
+    ADD #12, APTR2            ; *APTR2 = &c[14]
+    MOV @APTR2+, A6           ; A6 = c[14]
+    MOV @APTR2+, A7           ; A7 = c[15]
+    
+    ADD 14(RPTR2),14(RPTR2)   ; C <- MSB of c[7]
+    ADDC A0, A0
+    ADDC A1, A1
+    ADDC A2, A2
+    ADDC A3, A3
+    
+    ADDC A4, A4
+    ADDC A5, A5
+    ADDC A6, A6
+    ADDC A7, A7
+    ADC TMP0
+    
+    SUB #32, APTR2
+    MOV 14(APTR2), 14(RPTR2)
+    AND #0X7FFF, 14(RPTR2)
+    
+    ADD  @APTR2+, A0
+    ADDC @APTR2+, A1
+    ADDC @APTR2+, A2
+    ADDC @APTR2+, A3
+    
+    ADDC @APTR2+, A4
+    ADDC @APTR2+, A5
+    ADDC @APTR2+, A6
+    ADDC 14(RPTR2), A7
+    ADC TMP0
+    
+    MOV A7, APTR2
+    AND #0X7FFF, A7    
+    
+    ADD APTR2, APTR2
+    ADDC TMP0, TMP0
+    
+    ADD TMP0, A0
+    ADC A1
+    ADC A2
+    ADC A3
+    
+    ADC A4
+    ADC A5
+    ADC A6
+    ADC A7
+    
+    MOV A0, 0(RPTR2)
+    MOV A1, 2(RPTR2)
+    MOV A2, 4(RPTR2)
+    MOV A3, 6(RPTR2)
+    
+    MOV A4, 8(RPTR2)
+    MOV A5, 10(RPTR2)
+    MOV A6, 12(RPTR2)
+    MOV A7, 14(RPTR2)
+        
+        
+    // restore callee-saved registers
+    POP  A5
+    POP  A4
+    POP  A3
+    POP  A2
+    POP  A1
+    POP  A0        
+    POP TMP0
+        
+    RETA
+
+END

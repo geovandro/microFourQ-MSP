@@ -1,0 +1,48 @@
+////////////////////////////////////////////////////////////////////////////////
+// Subtraction of two UINT16 arrays: r = a - b                                //
+//                                                                            //
+// Authors: Hwajeong Seo                                                      //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME mp_sub            ; module name
+PUBLIC mp_sub          ; make the main label vissible outside this module
+RSEG CODE              ; place program in 'CODE' segment
+
+#define LEN R15
+#define RPTR R14
+
+#define BPTR R13
+#define APTR R12
+
+#define DIF R11
+#define BORROW R10
+
+mp_sub:
+    
+    PUSH.W DIF
+    PUSH.W BORROW
+    
+    ADD  LEN, LEN
+    MOV  #1, BORROW         ; initialize BORROW register with 1
+    
+LOOP:
+    MOV  @APTR+, DIF        ; load a[i] to DIF
+    RRA  BORROW             ; restore carry flag; BORROW register is now 0
+    SUBC @BPTR+, DIF        ; subtract b[i] with carry from a[i] (a[i] - b[1] + C)
+    ADC  BORROW             ; save the carry flag in BORROW register
+    MOV  DIF, 0(RPTR)       ; write dif to r[i]
+    ADD  #2, RPTR           ; increment R pointer (carry flag gets modified!)
+    DEC  LEN                ; decrement len
+    JNZ  LOOP               ; jump to 'LOOP' if not zero
+    
+    XOR  #1, BORROW         ; invert LSB of BORROW register
+    MOV  BORROW, R12        ; return borrow bit (is either 0 or 1)
+
+    POP  BORROW
+    POP  DIF
+    
+    RETA
+    
+END

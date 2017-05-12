@@ -1,0 +1,4 @@
+Notice that the linker template file for the MSP430FR5969 model inside "../IAR Systems/Embedded Workbench X.Y\430\config\linker" directory was changed for a larger stack size to work. 
+This is necessary for the most stack-consuming operations in the fourq-msp library when using 2KiB RAM devices such as MSP430FR5969.
+
+The modified template is available in the "iar-ide" directory of this project.

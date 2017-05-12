@@ -1,0 +1,131 @@
+////////////////////////////////////////////////////////////////////////////////
+// Multiplication (product-scanning method) of two UINT16 arrays: r = a*b     //
+// uses the hardware multiplier (MAC)                                         //
+// Function:    void mp_mul(r, a, b, len)                                     //
+//                                                                            //
+// Authors: Hwajeong Seo                                                      //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME mp_mul            ; module name
+PUBLIC mp_mul          ; make the main label vissible outside this module
+RSEG CODE              ; place program in 'CODE' segment
+
+; R7 -- the start address of array 'a'
+#define ASTART R7
+; R8 -- the start address of array 'b'
+#define BSTART R8
+; R9 -- the index of the INSTOP
+#define INNSTOP R9
+; R10 -- the index of the OUTSTOP
+#define OUTSTOP R10
+; R11 -- the carry bit
+#define CARRY R11
+
+; R12 -- the starting address of array 'a'
+#define APTR R12
+; R13 -- the starting address of array 'b'
+#define BPTR R13
+; R14 -- the starting address of array 'r'
+#define RPTR R14
+
+; R15 -- the value of 'length'
+#define LEN R15
+
+
+mp_mul: ; NOP             ; main program
+        ; MOV #WDTPW+WDTHOLD,&WDTCTL    ; stop watchdog timer
+        
+        // push callee-saved registers on stack
+        PUSH.W  R11
+        PUSH.W  R10
+        PUSH.W  R9
+        PUSH.W  R8
+        PUSH.W  R7
+        
+        // initialization of variables
+        CLR  CARRY
+        MOV  APTR, ASTART
+        MOV  BPTR, BSTART
+        MOV  BPTR, INNSTOP
+        ADD  LEN,  LEN         ; LEN now holds the number of bytes
+        ADD  LEN,  LEN         ; LEN now holds the number of bytes
+        MOV  LEN,  OUTSTOP
+        ADD  RPTR, OUTSTOP
+        
+        // very first multiplication
+        MOV  @APTR, &MPY        ; load a[0] to the first operand           
+        MOV  @BPTR, &OP2        ; load b[0] to the second operand
+        MOV  &RESLO, 0(RPTR)    ; load the lower 16-bit of the result to c[0]
+        ADD  #2, RPTR
+        MOV  &RESHI, &RESLO     ; load the upper 16-bit to be part of the lower 16-bit
+        MOV  CARRY, &RESHI
+        
+OUTLOOP1:
+        ADD  #2, BSTART
+        MOV  ASTART, APTR
+        MOV  BSTART, BPTR
+        
+INNLOOP1:
+        MOV  @APTR+, &MAC       ; load a[j++] to the first operand
+        MOV  @BPTR, &OP2        ; load b[k--] to the second operand
+        SUB  #2, BPTR
+        ADD  &SUMEXT, CARRY
+        
+        CMP  INNSTOP, BPTR
+        JGE  INNLOOP1           ; Jump condition: INSTOP<=BPTR
+        
+        MOV  &RESLO, 0(RPTR)    ; load the lower 16-bit of the result to c[0]
+        ADD  #2, RPTR
+        MOV  &RESHI, &RESLO     ; load the upper 16-bit to be part of the lower 16-bit
+        MOV  CARRY, &RESHI
+        CLR  CARRY
+        
+        CMP  OUTSTOP, RPTR
+        JN   OUTLOOP1           ; jump condition: OUTSTOP<TWOLENM
+        
+        // prepare for second nested loop
+        MOV  ASTART, INNSTOP
+        ADD  LEN, INNSTOP
+        ADD  LEN, OUTSTOP
+        SUB  #4, OUTSTOP
+        
+OUTLOOP2:
+        ADD  #2, ASTART
+        MOV  ASTART, APTR
+        MOV  BSTART, BPTR
+        
+INNLOOP2:
+        MOV  @APTR+, &MAC       ; load a[j++] to the first operand
+        MOV  @BPTR, &OP2        ; load b[k--] to the second operand
+        SUB  #2, BPTR
+        ADD  &SUMEXT, CARRY
+        
+        CMP  INNSTOP, APTR
+        JN   INNLOOP2           ; jump condition: APTR<=INSTOP
+        
+        MOV  &RESLO, 0(RPTR)    ; load the lower 16-bit of the result to t[0]
+        ADD  #2, RPTR
+        MOV  &RESHI, &RESLO     ; load the upper 16-bit to be part of the lower 16-bit
+        MOV  CARRY, &RESHI
+        CLR  CARRY
+        
+        CMP  OUTSTOP, RPTR
+        JN   OUTLOOP2           ; jump condition: TWO<=OUTSTOP
+        
+        // very last multiplication (note that &MAC still holds a[len-1])
+        MOV  @BSTART, &OP2      ; load b[k--] to the second operand
+        MOV  &RESLO, 0(RPTR)    ; load the lower 16-bit of the result to t[0]
+        MOV  &RESHI, 2(RPTR)    ; load the lower 16-bit of the result to t[0]
+        
+        // restore callee-saved registers
+        POP  R7
+        POP  R8
+        POP  R9
+        POP  R10
+        POP  R11
+        
+        RETA
+        
+END

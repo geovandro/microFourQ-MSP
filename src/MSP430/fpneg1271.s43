@@ -1,0 +1,77 @@
+////////////////////////////////////////////////////////////////////////////////
+// Negation of a field element in a UINT16 array: r = -a mod 2^127-1          //
+//                                                                            //
+// Authors: Hwajeong Seo                                                      //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME fpneg1271            ; module name
+PUBLIC fpneg1271          ; make the main label vissible outside this module
+RSEG CODE                 ; place program in 'CODE' segment
+
+
+#define A7 R15
+#define A6 R14
+#define A5 R13
+
+#define APTR R12
+
+#define A4 R11
+#define A3 R10
+#define A2 R9
+#define A1 R8
+#define A0 R7
+
+
+fpneg1271:
+    
+    PUSH.W A0
+    PUSH.W A1
+    PUSH.W A2
+    PUSH.W A3
+    PUSH.W A4
+
+
+    MOV #0XFFFF, A0
+    MOV #0XFFFF, A1
+    MOV #0XFFFF, A2
+    MOV #0XFFFF, A3
+
+    MOV #0XFFFF, A4
+    MOV #0XFFFF, A5
+    MOV #0XFFFF, A6
+
+    MOV #0X7FFF, A7
+
+    SUB  @APTR+, A0
+    SUBC @APTR+, A1
+    SUBC @APTR+, A2
+    SUBC @APTR+, A3
+
+    SUBC @APTR+, A4
+    SUBC @APTR+, A5
+    SUBC @APTR+, A6
+    SUBC @APTR+, A7
+
+    MOV  A0, -16(APTR)       
+    MOV  A1, -14(APTR)       
+    MOV  A2, -12(APTR)       
+    MOV  A3, -10(APTR)       
+
+    MOV  A4, -8(APTR)       
+    MOV  A5, -6(APTR)       
+    MOV  A6, -4(APTR)       
+    MOV  A7, -2(APTR)       
+    
+        
+
+    POP  A4
+    POP  A3
+    POP  A2
+    POP  A1
+    POP  A0
+    
+    RETA
+    
+END

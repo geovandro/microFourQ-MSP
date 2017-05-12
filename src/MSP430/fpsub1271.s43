@@ -1,0 +1,73 @@
+////////////////////////////////////////////////////////////////////////////////
+// Subtraction of two field elements in UINT16 arrays: r = a - b mod 2^127-1  //
+//                                                                            //
+// Authors: Hwajeong Seo                                                      //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME fpsub1271            ; module name
+PUBLIC fpsub1271          ; make the main label vissible outside this module
+RSEG CODE                 ; place program in 'CODE' segment
+
+#define BORROW R15
+#define RPTR R14
+#define BPTR R13
+#define APTR R12
+
+
+#define DIF R11
+
+
+fpsub1271:
+    
+    PUSH.W DIF
+    
+    CLR  BORROW
+    CLR  DIF                
+    MOV  @APTR+, DIF        
+    SUB  @BPTR+, DIF         
+    MOV  DIF, 0(RPTR)       ; 16
+    MOV  @APTR+, DIF        
+    SUBC @BPTR+, DIF         
+    MOV  DIF, 2(RPTR)       ; 32
+    MOV  @APTR+, DIF        
+    SUBC @BPTR+, DIF         
+    MOV  DIF, 4(RPTR)       ; 48
+    MOV  @APTR+, DIF        
+    SUBC @BPTR+, DIF         
+    MOV  DIF, 6(RPTR)       ; 64
+    MOV  @APTR+, DIF        
+    SUBC @BPTR+, DIF         
+    MOV  DIF, 8(RPTR)       ; 80
+    MOV  @APTR+, DIF        
+    SUBC @BPTR+, DIF         
+    MOV  DIF, 10(RPTR)       ; 96
+    MOV  @APTR+, DIF        
+    SUBC @BPTR+, DIF         
+    MOV  DIF, 12(RPTR)       ; 112
+    MOV  @APTR+, DIF        
+    SUBC @BPTR+, DIF         
+     
+    MOV DIF, APTR    
+    AND #0X7FFF, DIF
+    MOV DIF, 14(RPTR)        ; 128
+    ADD APTR, APTR
+    ADC BORROW
+    
+    SUB  BORROW, 0(RPTR)
+    SBC  2(RPTR)
+    SBC  4(RPTR)
+    SBC  6(RPTR)
+    
+    SBC  8(RPTR)
+    SBC  10(RPTR)
+    SBC  12(RPTR)
+    SBC  14(RPTR)
+    
+        
+    POP  DIF
+    
+    RETA
+    
+END

@@ -1,0 +1,77 @@
+////////////////////////////////////////////////////////////////////////////////
+// Modular addition of two UINT16 arrays r = a + b mod 2^127-1                //
+//                                                                            //
+// Authors: Hwajeong Seo                                                      //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME fpadd1271            ; module name
+PUBLIC fpadd1271          ; make the main label vissible outside this module
+RSEG CODE                 ; place program in 'CODE' segment
+
+#define CARRY R15
+#define RPTR R14
+#define BPTR R13
+#define APTR R12
+
+
+#define SUM R11
+
+
+fpadd1271:
+    
+    PUSH.W SUM
+    
+    CLR  CARRY
+    CLR  SUM                
+    MOV  @APTR+, SUM        
+    ADD  @BPTR+, SUM         
+    MOV  SUM, 0(RPTR)       ; 16
+    MOV  @APTR+, SUM        
+    ADDC @BPTR+, SUM         
+    MOV  SUM, 2(RPTR)       ; 32
+    MOV  @APTR+, SUM        
+    ADDC @BPTR+, SUM         
+    MOV  SUM, 4(RPTR)       ; 48
+    MOV  @APTR+, SUM        
+    ADDC @BPTR+, SUM         
+    MOV  SUM, 6(RPTR)       ; 64
+    
+    MOV  @APTR+, SUM        
+    ADDC @BPTR+, SUM         
+    MOV  SUM, 8(RPTR)       ; 80
+    MOV  @APTR+, SUM        
+    ADDC @BPTR+, SUM         
+    MOV  SUM, 10(RPTR)       ; 96
+    MOV  @APTR+, SUM        
+    ADDC @BPTR+, SUM         
+    MOV  SUM, 12(RPTR)       ; 112
+    MOV  @APTR+, SUM        
+    ADDC @BPTR+, SUM         
+    
+    //MODULAR 
+    ADC  CARRY
+    
+    MOV  SUM, APTR    
+    AND  #0X7FFF, SUM
+    MOV  SUM, 14(RPTR)       ; 128
+    
+    ADD  APTR, APTR
+    ADDC CARRY, CARRY
+    
+    ADD  CARRY, 0(RPTR)       ; 16
+    ADC  2(RPTR)              ; 32
+    ADC  4(RPTR)              ; 48
+    ADC  6(RPTR)              ; 64
+    
+    ADC  8(RPTR)              ; 80
+    ADC  10(RPTR)             ; 96
+    ADC  12(RPTR)             ; 112
+    ADC  14(RPTR)             ; 128
+        
+    POP  SUM
+    
+    RETA
+    
+END

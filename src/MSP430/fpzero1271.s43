@@ -1,0 +1,32 @@
+////////////////////////////////////////////////////////////////////////////////
+// Assigns zero to a field element in a UINT16 array: a = 0                   //
+//                                                                            //
+// Authors: Hwajeong Seo                                                      //
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME fpzero1271            ; module name
+PUBLIC fpzero1271          ; make the main label vissible outside this module
+RSEG CODE                  ; place program in 'CODE' segment
+
+
+#define RPTR R12
+
+fpzero1271:    
+    
+    MOV  #0, 0(RPTR) 
+    MOV  #0, 2(RPTR) 
+    MOV  #0, 4(RPTR) 
+    MOV  #0, 6(RPTR) 
+    
+    MOV  #0, 8(RPTR) 
+    MOV  #0, 10(RPTR) 
+    MOV  #0, 12(RPTR) 
+    MOV  #0, 14(RPTR) 
+    
+    RETA
+    
+END
+
+

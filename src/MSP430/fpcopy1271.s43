@@ -1,0 +1,33 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copy of a field element UINT16 array of size 8 into another                //
+//                                                                            //
+// Authors: Zhe Liu, Hwajeong Seo                                             //        
+////////////////////////////////////////////////////////////////////////////////
+
+#include <msp430.h>
+
+NAME fpcopy1271            ; module name
+PUBLIC fpcopy1271          ; make the main label vissible outside this module
+RSEG CODE                  ; place program in 'CODE' segment
+
+#define RPTR R13
+#define APTR R12
+
+fpcopy1271:    
+    
+    MOV  @APTR+, 0(RPTR) 
+    MOV  @APTR+, 2(RPTR) 
+    MOV  @APTR+, 4(RPTR) 
+    MOV  @APTR+, 6(RPTR) 
+    
+    MOV  @APTR+, 8(RPTR) 
+    MOV  @APTR+, 10(RPTR) 
+    MOV  @APTR+, 12(RPTR) 
+    MOV  @APTR+, 14(RPTR) 
+ 
+    
+    RETA
+    
+END
+
+
