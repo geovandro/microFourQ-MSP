@@ -25,8 +25,6 @@ ECCRYPTO_STATUS SchnorrQ_test()
     ECCRYPTO_STATUS Status = ECCRYPTO_SUCCESS;
 
     passed = 1;
-
-#ifndef BENCH_VERIFY
     for (n = 0; n < TEST_LOOPS; n++)
     {
         // Signature key generation
@@ -56,7 +54,7 @@ ECCRYPTO_STATUS SchnorrQ_test()
 
         // Invalid signature test (flipping one bit of the message)
         msg = "b";  
-        //Status = SchnorrQ_Verify(PublicKey, msg, len, Signature, &valid);
+        Status = SchnorrQ_Verify(PublicKey, msg, len, Signature, &valid);
         if (Status != ECCRYPTO_SUCCESS) {
             return Status;
         }    
@@ -68,31 +66,7 @@ ECCRYPTO_STATUS SchnorrQ_test()
     if (passed==0) { 
       Status = ECCRYPTO_ERROR_SIGNATURE_VERIFICATION; 
     }
-#else 
-    char message[1]; 
-    // Signature key generation
-    Status = SchnorrQ_FullKeyGeneration(SecretKey, PublicKey);
-    if (Status != ECCRYPTO_SUCCESS) {
-        return Status;
-    }  
-
-    // Signature computation
-    message[0] = 'a';  
-    len = 1;
- 
-    Status = SchnorrQ_Sign(SecretKey, PublicKey, msg, len, Signature);
-    if (Status != ECCRYPTO_SUCCESS) {
-        return Status;
-    }
-    
-    for (n = 0; n < TEST_LOOPS; n++)
-    {        
-        // Valid signature test
-        Status = SchnorrQ_Verify(PublicKey, message, len, Signature, &valid);
-        message[0] = (int)message[0] + 1;
-    }
-#endif
-    
+   
     return Status;
 }
 
@@ -171,7 +145,7 @@ ECCRYPTO_STATUS kex_test()
                 return Status;
             }
             // Bob's shared secret computation
-            //Status = SecretAgreement(SecretKeyB, PublicKeyA, SecretAgreementB);
+            Status = SecretAgreement(SecretKeyB, PublicKeyA, SecretAgreementB);
             if (Status != ECCRYPTO_SUCCESS) {
                 return Status;
             }
@@ -200,12 +174,12 @@ int crypto_tests()
         return false;
     }
 
-    //Status = compressedkex_test();    // Test Diffie-Hellman key exchange using compressed public keys
+    Status = compressedkex_test();    // Test Diffie-Hellman key exchange using compressed public keys
     if (Status != ECCRYPTO_SUCCESS) {
         return false;
     }
 
-    //Status = kex_test();              // Test Diffie-Hellman key exchange using uncompressed public keys
+    Status = kex_test();              // Test Diffie-Hellman key exchange using uncompressed public keys
     if (Status != ECCRYPTO_SUCCESS) {
         return false;
     }

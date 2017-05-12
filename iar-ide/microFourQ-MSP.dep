@@ -16,31 +16,19 @@
             <file>$PROJ_DIR$\..\src\blake2b\sph_blake.h</file>
             <file>$PROJ_DIR$\..\src\MSP430\fp.h</file>
             <file>$PROJ_DIR$\..\src\MSP430\fpcopy1271.s43</file>
-            <file>$PROJ_DIR$\..\src\MSP430\mod_sqr128.s43</file>
-            <file>$PROJ_DIR$\..\src\MSP430\mp_add.s43</file>
-            <file>$PROJ_DIR$\..\src\tests\crypto_tests.c</file>
-            <file>$PROJ_DIR$\..\src\tests\ecc_tests.c</file>
+            <file>$PROJ_DIR$\..\src\MSP430\mod1271.s43</file>
+            <file>$PROJ_DIR$\..\src\main.c</file>
+            <file>$PROJ_DIR$\..\src\schnorrq.c</file>
+            <file>$PROJ_DIR$\..\src\table_lookup.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\fp_tests.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\random.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\schnorrq.pbi</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
             <file>$PROJ_DIR$\Debug\Obj\fpsub1271.r43</file>
-            <file>$PROJ_DIR$\..\src\tests\fp_tests.c</file>
-            <file>$PROJ_DIR$\..\src\tests\test_extras.c</file>
-            <file>$PROJ_DIR$\..\src\tests\test_extras.h</file>
-            <file>$PROJ_DIR$\..\src\crypto_util.c</file>
-            <file>$PROJ_DIR$\..\src\eccp2.c</file>
-            <file>$PROJ_DIR$\..\src\eccp2_no_endo.c</file>
-            <file>$PROJ_DIR$\..\src\FourQ.h</file>
-            <file>$PROJ_DIR$\..\src\FourQ_api.h</file>
-            <file>$PROJ_DIR$\..\src\FourQ_internal.h</file>
-            <file>$PROJ_DIR$\..\src\FourQ_params.h</file>
-            <file>$PROJ_DIR$\..\src\FourQ_tables.h</file>
-            <file>$PROJ_DIR$\..\src\kex.c</file>
-            <file>$PROJ_DIR$\..\src\main.c</file>
-            <file>$PROJ_DIR$\..\src\schnorrq.c</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\stdio.h</file>
             <file>$PROJ_DIR$\Debug\Obj\ecc_tests.__cstat.et</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
-            <file>$PROJ_DIR$\..\src\MSP430\mod1271.s43</file>
             <file>$PROJ_DIR$\Debug\Obj\kex.__cstat.et</file>
             <file>$PROJ_DIR$\Debug\Obj\fpmul1271.r43</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\ystdio.h</file>
@@ -48,8 +36,14 @@
             <file>$PROJ_DIR$\Debug\Obj\mp_add128.r43</file>
             <file>$PROJ_DIR$\Debug\Obj\mp_mul.r43</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\stddef.h</file>
+            <file>$PROJ_DIR$\..\src\MSP430\mp_add.s43</file>
+            <file>$PROJ_DIR$\..\src\MSP430\mod_sqr128.s43</file>
+            <file>$PROJ_DIR$\..\src\MSP430\mp_add128.s43</file>
             <file>$PROJ_DIR$\Debug\Obj\test_extras.r43</file>
             <file>$PROJ_DIR$\Debug\Obj\mp_sub.r43</file>
+            <file>$PROJ_DIR$\..\src\random\random.c</file>
+            <file>$PROJ_DIR$\..\src\MSP430\mp_mul.s43</file>
+            <file>$PROJ_DIR$\..\src\MSP430\mp_sub.s43</file>
             <file>$PROJ_DIR$\Debug\Obj\eccp2_no_endo.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\mod1271.r43</file>
             <file>$PROJ_DIR$\Debug\Obj\crypto_tests.pbi</file>
@@ -57,33 +51,45 @@
             <file>$PROJ_DIR$\..\src\IAR_stdint.h</file>
             <file>$PROJ_DIR$\Debug\Obj\kex.r43</file>
             <file>$PROJ_DIR$\Debug\Obj\eccp2.pbi</file>
-            <file>$PROJ_DIR$\..\src\random\random.h</file>
-            <file>$PROJ_DIR$\..\src\random\random.c</file>
-            <file>$PROJ_DIR$\..\src\MSP430\mp_sub.s43</file>
-            <file>$PROJ_DIR$\..\src\MSP430\mp_mul.s43</file>
-            <file>$PROJ_DIR$\..\src\MSP430\mp_add128.s43</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
-            <file>$PROJ_DIR$\..\src\table_lookup.h</file>
             <file>$PROJ_DIR$\Debug\Exe\microFourQ-MSP.ulp</file>
             <file>$PROJ_DIR$\Debug\Obj\fpadd1271.r43</file>
             <file>$PROJ_DIR$\Debug\Obj\fpneg1271.r43</file>
             <file>$PROJ_DIR$\Debug\List\microFourQ-MSP.html</file>
             <file>$TOOLKIT_DIR$\lib\dlib\dl430xlsfn.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\fp_tests.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\random.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\blake.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\limits.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\random.r43</file>
-            <file>$PROJ_DIR$\Debug\Obj\crypto_util.r43</file>
+            <file>$PROJ_DIR$\..\src\tests\fp_tests.c</file>
+            <file>$PROJ_DIR$\..\src\random\random.h</file>
+            <file>$PROJ_DIR$\..\src\tests\crypto_tests.c</file>
+            <file>$PROJ_DIR$\..\src\tests\ecc_tests.c</file>
+            <file>$PROJ_DIR$\..\src\tests\test_extras.h</file>
+            <file>$PROJ_DIR$\..\src\crypto_util.c</file>
+            <file>$PROJ_DIR$\..\src\eccp2.c</file>
+            <file>$PROJ_DIR$\..\src\tests\test_extras.c</file>
+            <file>$PROJ_DIR$\..\src\FourQ_tables.h</file>
+            <file>$PROJ_DIR$\..\src\FourQ_params.h</file>
+            <file>$PROJ_DIR$\..\src\FourQ_internal.h</file>
+            <file>$PROJ_DIR$\..\src\FourQ_api.h</file>
+            <file>$PROJ_DIR$\..\src\FourQ.h</file>
+            <file>$PROJ_DIR$\..\src\eccp2_no_endo.c</file>
+            <file>$PROJ_DIR$\..\src\kex.c</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
-            <file>$PROJ_DIR$\Debug\Obj\crypto_util.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_util.r43</file>
             <file>$TOOLKIT_DIR$\inc\msp430fr5969.h</file>
-            <file>$TOOLKIT_DIR$\config\linker\multiplier32.xcl</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\limits.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\test_extras.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\lib\dlib\dl430xlsfn.r43</file>
+            <file>$PROJ_DIR$\Debug\Obj\eccp2_no_endo.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_util.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\random.r43</file>
             <file>$PROJ_DIR$\Debug\Obj\kex.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\fp_tests.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\msp430.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\mod_sqr128.r43</file>
+            <file>$PROJ_DIR$\Debug\Obj\microFourQ-MSP.pbd</file>
+            <file>$PROJ_DIR$\Debug\Obj\blake.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\eccp2.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\ecc_tests.pbi</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
             <file>$PROJ_DIR$\Debug\Obj\schnorrq.__cstat.et</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
@@ -103,29 +109,23 @@
             <file>$PROJ_DIR$\Debug\Obj\ecc_tests.r43</file>
             <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
             <file>$PROJ_DIR$\Debug\Obj\eccp2.r43</file>
-            <file>$PROJ_DIR$\Debug\Obj\test_extras.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\lib\dlib\dl430xlsfn.r43</file>
-            <file>$PROJ_DIR$\Debug\Obj\eccp2_no_endo.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\fp_tests.pbi</file>
-            <file>$TOOLKIT_DIR$\inc\msp430.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\mod_sqr128.r43</file>
-            <file>$PROJ_DIR$\Debug\Obj\microFourQ-MSP.pbd</file>
-            <file>$PROJ_DIR$\Debug\Obj\blake.pbi</file>
-            <file>$PROJ_DIR$\Debug\Obj\ecc_tests.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+            <file>$TOOLKIT_DIR$\config\linker\multiplier32.xcl</file>
+            <file>$PROJ_DIR$\Debug\Obj\blake.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\..\src\MSP430\fpzero1271.s43</name>
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 85</file>
+                    <file> 91</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 102 74</file>
+                    <file> 79 69</file>
                 </tool>
             </inputs>
         </file>
@@ -134,13 +134,13 @@
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 17</file>
+                    <file> 20</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 102 74</file>
+                    <file> 79 69</file>
                 </tool>
             </inputs>
         </file>
@@ -149,13 +149,13 @@
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 61</file>
+                    <file> 49</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 102 74</file>
+                    <file> 79 69</file>
                 </tool>
             </inputs>
         </file>
@@ -164,13 +164,13 @@
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 37</file>
+                    <file> 25</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 102 74</file>
+                    <file> 79 69</file>
                 </tool>
             </inputs>
         </file>
@@ -178,26 +178,26 @@
             <name>$PROJ_DIR$\..\src\blake2b\blake.c</name>
             <outputs>
                 <tool>
+                    <name>ICC430</name>
+                    <file> 42</file>
+                </tool>
+                <tool>
                     <name>BICOMP</name>
-                    <file> 106</file>
+                    <file> 82</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 67</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 48</file>
+                    <file> 106</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 71 8 76 103 68 16 57 63 42 34 5 79 65 81 6</file>
+                    <name>ICC430</name>
+                    <file> 30 67 77 85 51 107 46 16 19 23 70 87</file>
                 </tool>
                 <tool>
-                    <name>ICC430</name>
-                    <file> 42 71 103 79 63 76 57 65 16 34 68 81</file>
+                    <name>BICOMP</name>
+                    <file> 67 8 107 77 70 19 46 51 30 23 5 85 16 87 6</file>
                 </tool>
             </inputs>
         </file>
@@ -206,13 +206,13 @@
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 60</file>
+                    <file> 48</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 102 74</file>
+                    <file> 79 69</file>
                 </tool>
             </inputs>
         </file>
@@ -221,13 +221,13 @@
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 94</file>
+                    <file> 100</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 102 74</file>
+                    <file> 79 69</file>
                 </tool>
             </inputs>
         </file>
@@ -236,380 +236,16 @@
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 86 62</file>
+                    <file> 92 50</file>
                 </tool>
                 <tool>
                     <name>ULP430</name>
-                    <file> 59</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\MSP430\mod_sqr128.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 104</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 102 74</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\MSP430\mp_add.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 90</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 102 74</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\tests\crypto_tests.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
                     <file> 47</file>
                 </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 83</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 93</file>
-                </tool>
             </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 25 71 79 65 20 49 26 27 32 24 16 103 38 57 63 76</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 32 71 103 79 63 76 57 65 16 38</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\tests\ecc_tests.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 107</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 33</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 95</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 71 79 65 20 27 32 24 16 103 26 25 49 38 57 63 76</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 32 71 103 79 63 76 57 65 16 38</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\tests\fp_tests.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 101</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 64</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 89</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 49 25 71 79 65 32 20 24 16 103 26 38 57 63 76</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 32 71 103 79 63 76 57 65 16 38</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\tests\test_extras.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 91</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 98</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 43</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 49 25 82 16 71 57 32 65 20 34 24 103 38 79 26 63 76</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 32 71 103 79 63 76 57 65 16 38 34 82</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\crypto_util.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 39</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 73</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 70</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 25 103 34 71 27 24 79 65 26 49 16 57 63 76</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 34 71 103 79 63 76 57 65 16</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\eccp2.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 51</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 78</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 97</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 57 42 71 16 63 28 25 49 26 76 103 27 9 24 79 65 58</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 42 71 103 79 63 76 57 65 16</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\eccp2_no_endo.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 45</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 100</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 84</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 49 25 24 26</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\kex.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 77</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 36</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 50</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 79 103 52 27 34 25 49 26 65 24 71 16 57 63 76</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 34 71 103 79 63 76 57 65 16</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\main.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 87</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 96</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 72</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 49 24</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\schnorrq.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 15</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 80</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 92</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 24 82 103 52 57 79 63 27 5 34 25 49 26 71 16 76 65</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 82 71 103 79 63 76 57 65 16 34</file>
-                </tool>
-            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\MSP430\mod1271.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 46</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 102 74</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\random\random.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 66</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 88</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 69</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 16 71 57 76 103 82 24 63 52 25 49 79 65 26</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 82 71 103 79 63 76 57 65 16</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\MSP430\mp_sub.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 44</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 102 74</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\MSP430\mp_mul.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 41</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 102 74</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\MSP430\mp_add128.s43</name>
             <outputs>
                 <tool>
                     <name>A430</name>
@@ -619,7 +255,371 @@
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 102 74</file>
+                    <file> 79 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 104</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 93</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 102</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 43 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\schnorrq.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 98</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 86</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 88 67 77 85 51 107 46 16 19 23</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 88 46 85 53 64 77 51 61 5 23 63 43 62 67 19 107 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\MSP430\mp_add.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 96</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 79 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\MSP430\mod_sqr128.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 80</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 79 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\MSP430\mp_add128.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 28</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 79 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\random\random.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 75</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 17</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 94</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 88 67 77 85 51 107 46 16 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 19 67 46 107 77 88 64 51 53 63 43 85 16 62</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\MSP430\mp_mul.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 29</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 79 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\MSP430\mp_sub.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 35</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 79 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\fp_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 95</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 78</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 15</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 21 67 77 85 51 107 46 16 19 26</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 43 63 67 85 16 21 56 64 19 77 62 26 46 51 107</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\crypto_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 99</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 89</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 21 67 77 85 51 107 46 16 19 26</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 63 67 85 16 56 43 62 61 21 64 19 77 26 46 51 107</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\ecc_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 101</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 84</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 21 67 77 85 51 107 46 16 19 26</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 67 85 16 56 61 21 64 19 77 62 63 43 26 46 51 107</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\crypto_util.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 68</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 74</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 23 67 77 85 51 107 46 16 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 63 77 23 67 61 64 85 16 62 43 19 46 51 107</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\eccp2.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 103</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 83</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 30 67 77 85 51 107 46 16 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 46 30 67 19 51 60 63 43 62 107 77 61 9 64 85 16 14</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\test_extras.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 34</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 97</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 71</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 21 67 77 85 51 107 46 16 19 26 23 88</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 43 63 88 19 67 46 21 16 56 23 64 77 26 85 62 51 107</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\eccp2_no_endo.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 90</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 39</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 73</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 43 63 64 62</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\kex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 44</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 76</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 24</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 23 67 77 85 51 107 46 16 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 85 77 53 61 23 63 43 62 16 64 67 19 46 51 107</file>
                 </tool>
             </inputs>
         </file>
@@ -628,13 +628,13 @@
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 62</file>
+                    <file> 50</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 75 99</file>
+                    <file> 105 72</file>
                 </tool>
             </inputs>
         </file>
@@ -642,32 +642,53 @@
     <configuration>
         <name>Release</name>
         <outputs>
-            <file>$PROJ_DIR$\FourQ.h</file>
-            <file>$PROJ_DIR$\FourQ_api.h</file>
-            <file>$PROJ_DIR$\Release\Obj\ecc_tests.pbi</file>
-            <file>$PROJ_DIR$\Release\Obj\kex.__cstat.et</file>
-            <file>$TOOLKIT_DIR$\inc\clib\stddef.h</file>
-            <file>$PROJ_DIR$\FourQ_tables.h</file>
-            <file>$PROJ_DIR$\Release\Obj\mp_add.r43</file>
-            <file>$PROJ_DIR$\sha512\blake2b-ref.c</file>
-            <file>$PROJ_DIR$\Release\Obj\test_extras.__cstat.et</file>
-            <file>$PROJ_DIR$\eccp2_no_endo.c</file>
-            <file>$PROJ_DIR$\Release\Obj\fpadd1271.r43</file>
-            <file>$PROJ_DIR$\Release\Exe\microFourQ-MSP.txt</file>
-            <file>$PROJ_DIR$\schnorrq.c</file>
-            <file>$PROJ_DIR$\sha512\blake2.h</file>
-            <file>$PROJ_DIR$\Release\Obj\random.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\ecc_tests.r43</file>
-            <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
-            <file>$PROJ_DIR$\Release\Obj\fpsub1271.r43</file>
-            <file>$PROJ_DIR$\kex.c</file>
+            <file>$PROJ_DIR$\Release\Obj\sqr128.r43</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+            <file>$PROJ_DIR$\Release\Obj\kex.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+            <file>$PROJ_DIR$\Release\Obj\test_extras.pbi</file>
+            <file>$PROJ_DIR$\Release\Obj\crypto_tests.__cstat.et</file>
+            <file>$PROJ_DIR$\tests\test_extras.h</file>
+            <file>$PROJ_DIR$\Release\Obj\mp_mul.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\eccp2_no_endo.r43</file>
+            <file>$PROJ_DIR$\tests\fp_tests.c</file>
+            <file>$PROJ_DIR$\generic\sqr128.s43</file>
+            <file>$PROJ_DIR$\Release\Obj\fpmul1271.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\add128.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\mod1271.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\eccp2_no_endo.pbi</file>
+            <file>$PROJ_DIR$\Release\Obj\random.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\eccp2.r43</file>
+            <file>$PROJ_DIR$\generic\mp_add.s43</file>
+            <file>$PROJ_DIR$\Release\Obj\crypto_util.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\blake2b-ref.__cstat.et</file>
+            <file>$PROJ_DIR$\tests\ecc_tests.c</file>
+            <file>$PROJ_DIR$\Release\Obj\mod128.r43</file>
+            <file>$PROJ_DIR$\generic\fp.h</file>
+            <file>$PROJ_DIR$\sha512\blake2-impl.h</file>
+            <file>$PROJ_DIR$\Release\Obj\schnorrq.pbi</file>
+            <file>$PROJ_DIR$\generic\mp_sub.s43</file>
+            <file>$PROJ_DIR$\Release\Obj\eccp2.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\crypto_tests.pbi</file>
+            <file>$PROJ_DIR$\Release\Obj\fpcopy1271.r43</file>
+            <file>$PROJ_DIR$\generic\fpcopy1271.s43</file>
+            <file>$PROJ_DIR$\generic\fpmul1271.s43</file>
+            <file>$PROJ_DIR$\generic\fpneg1271.s43</file>
+            <file>$PROJ_DIR$\Release\Obj\fp_tests.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\fpzero1271.r43</file>
+            <file>$PROJ_DIR$\generic\fpadd1271.s43</file>
+            <file>$PROJ_DIR$\generic\fpsub1271.s43</file>
+            <file>$PROJ_DIR$\Release\Obj\random.pbi</file>
             <file>$PROJ_DIR$\IAR_stdint.h</file>
             <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
-            <file>$PROJ_DIR$\Release\Obj\ecc_tests.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\schnorrq.__cstat.et</file>
             <file>$PROJ_DIR$\Release\Obj\mp_sub.r43</file>
-            <file>$PROJ_DIR$\FourQ_internal.h</file>
             <file>$PROJ_DIR$\generic\mod128.s43</file>
+            <file>$PROJ_DIR$\FourQ_internal.h</file>
+            <file>$PROJ_DIR$\Release\Obj\schnorrq.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\ecc_tests.__cstat.et</file>
+            <file>$PROJ_DIR$\Release\Obj\eccp2.pbi</file>
+            <file>$PROJ_DIR$\generic\mp_mul.s43</file>
+            <file>$PROJ_DIR$\Release\Obj\blake2b-ref.r43</file>
             <file>$PROJ_DIR$\Release\Obj\test_extras.r43</file>
             <file>$PROJ_DIR$\generic\mod1271.s43</file>
             <file>$PROJ_DIR$\generic\mul128.s43</file>
@@ -698,424 +719,126 @@
             <file>$PROJ_DIR$\Release\Obj\eccp2_no_endo.__cstat.et</file>
             <file>$PROJ_DIR$\random\random.c</file>
             <file>$PROJ_DIR$\Release\Obj\crypto_tests.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\eccp2.pbi</file>
-            <file>$PROJ_DIR$\generic\mp_mul.s43</file>
-            <file>$PROJ_DIR$\Release\Obj\blake2b-ref.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\fp_tests.r43</file>
-            <file>$PROJ_DIR$\generic\fpsub1271.s43</file>
-            <file>$PROJ_DIR$\generic\fpneg1271.s43</file>
-            <file>$PROJ_DIR$\generic\fpmul1271.s43</file>
-            <file>$PROJ_DIR$\generic\fpcopy1271.s43</file>
-            <file>$PROJ_DIR$\Release\Obj\fpcopy1271.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\crypto_tests.pbi</file>
-            <file>$PROJ_DIR$\Release\Obj\fpzero1271.r43</file>
-            <file>$PROJ_DIR$\generic\fpadd1271.s43</file>
-            <file>$PROJ_DIR$\Release\Obj\random.pbi</file>
-            <file>$PROJ_DIR$\generic\fp.h</file>
-            <file>$PROJ_DIR$\sha512\blake2-impl.h</file>
-            <file>$PROJ_DIR$\generic\mp_sub.s43</file>
-            <file>$PROJ_DIR$\tests\ecc_tests.c</file>
-            <file>$PROJ_DIR$\Release\Obj\blake2b-ref.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\schnorrq.pbi</file>
-            <file>$PROJ_DIR$\Release\Obj\mod128.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\eccp2.__cstat.et</file>
-            <file>$PROJ_DIR$\tests\fp_tests.c</file>
-            <file>$PROJ_DIR$\tests\test_extras.h</file>
-            <file>$PROJ_DIR$\Release\Obj\mp_mul.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\eccp2_no_endo.r43</file>
-            <file>$PROJ_DIR$\generic\sqr128.s43</file>
-            <file>$PROJ_DIR$\Release\Obj\eccp2_no_endo.pbi</file>
-            <file>$PROJ_DIR$\Release\Obj\add128.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\mod1271.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\fpmul1271.r43</file>
-            <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
-            <file>$PROJ_DIR$\Release\Obj\test_extras.pbi</file>
-            <file>$PROJ_DIR$\Release\Obj\kex.pbi</file>
-            <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
-            <file>$PROJ_DIR$\Release\Obj\crypto_tests.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\random.__cstat.et</file>
-            <file>$PROJ_DIR$\Release\Obj\crypto_util.r43</file>
-            <file>$PROJ_DIR$\Release\Obj\eccp2.r43</file>
-            <file>$PROJ_DIR$\generic\mp_add.s43</file>
-            <file>$PROJ_DIR$\Release\Obj\sqr128.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\ecc_tests.pbi</file>
+            <file>$PROJ_DIR$\Release\Exe\microFourQ-MSP.txt</file>
+            <file>$PROJ_DIR$\Release\Obj\fpadd1271.r43</file>
+            <file>$PROJ_DIR$\schnorrq.c</file>
             <file>$TOOLKIT_DIR$\inc\msp430.h</file>
+            <file>$PROJ_DIR$\Release\Obj\kex.__cstat.et</file>
+            <file>$PROJ_DIR$\FourQ.h</file>
+            <file>$PROJ_DIR$\FourQ_api.h</file>
+            <file>$PROJ_DIR$\eccp2_no_endo.c</file>
+            <file>$PROJ_DIR$\Release\Obj\fpsub1271.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\ecc_tests.r43</file>
+            <file>$PROJ_DIR$\Release\Obj\random.r43</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+            <file>$PROJ_DIR$\sha512\blake2.h</file>
+            <file>$PROJ_DIR$\kex.c</file>
+            <file>$PROJ_DIR$\FourQ_tables.h</file>
+            <file>$PROJ_DIR$\sha512\blake2b-ref.c</file>
+            <file>$PROJ_DIR$\Release\Obj\mp_add.r43</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stddef.h</file>
+            <file>$PROJ_DIR$\Release\Obj\test_extras.__cstat.et</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 11</file>
+                    <file> 78</file>
                 </tool>
                 <tool>
                     <name>ULP430</name>
-                    <file> 44</file>
+                    <file> 65</file>
                 </tool>
             </outputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\sha512\blake2b-ref.c</name>
+            <name>$PROJ_DIR$\tests\fp_tests.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 33</file>
+                    <name>ICC430</name>
+                    <file> 32</file>
                 </tool>
                 <tool>
-                    <name>__cstat</name>
+                    <name>BICOMP</name>
                     <file> 73</file>
                 </tool>
                 <tool>
-                    <name>ICC430</name>
-                    <file> 58</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 70 16 46 89 13 86 4</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\eccp2_no_endo.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 82</file>
-                </tool>
-                <tool>
                     <name>__cstat</name>
-                    <file> 53</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 80</file>
+                    <file> 72</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 1 0 19 24</file>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
                 </tool>
                 <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
+                    <name>BICOMP</name>
+                    <file> 89 84 6 1 41 83 37 67</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\schnorrq.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 74</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 22</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 38</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 89 35 1 0 19 24 46</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\kex.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 88</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 3</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 42</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 0 1 89 35 19 24 46</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\mod128.s43</name>
+            <name>$PROJ_DIR$\generic\sqr128.s43</name>
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 75</file>
+                    <file> 0</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 96 47</file>
+                    <file> 81 68</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\generic\mod1271.s43</name>
+            <name>$PROJ_DIR$\generic\mp_add.s43</name>
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 84</file>
+                    <file> 94</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 96 47</file>
+                    <file> 81 68</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\generic\mul128.s43</name>
+            <name>$PROJ_DIR$\tests\ecc_tests.c</name>
             <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 50</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\fpzero1271.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 66</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\crypto_util.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 40</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 49</file>
-                </tool>
                 <tool>
                     <name>ICC430</name>
-                    <file> 92</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 0 89 35 19 24 1 46</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\tests\crypto_tests.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 65</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 90</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 55</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 24 78 35 16 1 86 0 19 46</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\tests\test_extras.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
                     <file> 87</file>
                 </tool>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 8</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 26</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
                     <name>BICOMP</name>
-                    <file> 16 20 78 89 1 46 24 0 19 86</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\eccp2.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 56</file>
+                    <file> 77</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 76</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 93</file>
+                    <file> 43</file>
                 </tool>
             </outputs>
             <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 5 24 35 69 1 0 19 45 4 46</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
+                    <file> 89 67 92 56 6 84 83 37 41 95 1</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\main.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 34</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 41</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 48</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\add128.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 83</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\random\random.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 68</file>
-                </tool>
-                <tool>
-                    <name>__cstat</name>
-                    <file> 91</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 14</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 1 0 46 20 24 19</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\mp_mul.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 79</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\fpsub1271.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 17</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\fpneg1271.s43</name>
+            <name>$PROJ_DIR$\generic\mp_sub.s43</name>
             <outputs>
                 <tool>
                     <name>A430</name>
@@ -1125,22 +848,7 @@
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 96 47</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\fpmul1271.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 85</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
+                    <file> 81 68</file>
                 </tool>
             </inputs>
         </file>
@@ -1149,13 +857,43 @@
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 64</file>
+                    <file> 28</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 96 47</file>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\generic\fpmul1271.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 11</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\generic\fpneg1271.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 60</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
                 </tool>
             </inputs>
         </file>
@@ -1164,112 +902,374 @@
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 10</file>
+                    <file> 79</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 96 47</file>
+                    <file> 81 68</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\generic\mp_sub.s43</name>
+            <name>$PROJ_DIR$\generic\fpsub1271.s43</name>
             <outputs>
                 <tool>
                     <name>A430</name>
-                    <file> 23</file>
+                    <file> 86</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>A430</name>
-                    <file> 96 47</file>
+                    <file> 81 68</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\tests\ecc_tests.c</name>
+            <name>$PROJ_DIR$\generic\mod128.s43</name>
             <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 21</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\generic\mp_mul.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 7</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\generic\mod1271.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 13</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\generic\mul128.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 71</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\generic\fpzero1271.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 33</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\crypto_util.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 61</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 70</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 83 3 56 37 41 84 67</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\tests\crypto_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 76</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 5</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 41 6 56 89 84 1 83 37 67</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\tests\test_extras.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 47</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 4</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 96</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 89 38 6 3 84 67 41 83 37 1</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\eccp2.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 44</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 26</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 92 41 56 22 84 83 37 66 95 67</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 69</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 55</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 62</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\generic\add128.s43</name>
+            <outputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>A430</name>
+                    <file> 81 68</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\random\random.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 88</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 36</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 15</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 84 83 67 38 41 37</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\schnorrq.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 59</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 42</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 3 56 84 83 37 41 67</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\eccp2_no_endo.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 14</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 74</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 84 83 37 41</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\kex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC430</name>
+                    <file> 63</file>
+                </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 2</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 21</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 15</file>
+                    <file> 82</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 16 46 5 35 78 1 0 19 24 4 86</file>
+                    <name>ICC430</name>
+                    <file> 41 84 83 37</file>
                 </tool>
                 <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
+                    <name>BICOMP</name>
+                    <file> 83 84 3 56 37 41 67</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\tests\fp_tests.c</name>
+            <name>$PROJ_DIR$\sha512\blake2b-ref.c</name>
             <outputs>
                 <tool>
+                    <name>ICC430</name>
+                    <file> 46</file>
+                </tool>
+                <tool>
                     <name>BICOMP</name>
-                    <file> 52</file>
+                    <file> 54</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 51</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 59</file>
+                    <file> 19</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 16 1 78 86 24 0 19 46</file>
-                </tool>
-                <tool>
-                    <name>ICC430</name>
-                    <file> 24 1 0 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\sqr128.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 95</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\generic\mp_add.s43</name>
-            <outputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 6</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>A430</name>
-                    <file> 96 47</file>
+                    <file> 23 89 67 3 90 1 95</file>
                 </tool>
             </inputs>
         </file>
@@ -1278,19 +1278,11 @@
             <tool>XLINK</tool>
         </forcedrebuild>
         <forcedrebuild>
-            <name>$PROJ_DIR$\sha512\blake2b-ref.c</name>
+            <name>$PROJ_DIR$\tests\fp_tests.c</name>
             <tool>ICC430</tool>
         </forcedrebuild>
         <forcedrebuild>
-            <name>$PROJ_DIR$\eccp2_no_endo.c</name>
-            <tool>ICC430</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\schnorrq.c</name>
-            <tool>ICC430</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\kex.c</name>
+            <name>$PROJ_DIR$\tests\ecc_tests.c</name>
             <tool>ICC430</tool>
         </forcedrebuild>
         <forcedrebuild>
@@ -1314,11 +1306,19 @@
             <tool>ICC430</tool>
         </forcedrebuild>
         <forcedrebuild>
-            <name>$PROJ_DIR$\tests\ecc_tests.c</name>
+            <name>$PROJ_DIR$\schnorrq.c</name>
             <tool>ICC430</tool>
         </forcedrebuild>
         <forcedrebuild>
-            <name>$PROJ_DIR$\tests\fp_tests.c</name>
+            <name>$PROJ_DIR$\eccp2_no_endo.c</name>
+            <tool>ICC430</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\kex.c</name>
+            <tool>ICC430</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\sha512\blake2b-ref.c</name>
             <tool>ICC430</tool>
         </forcedrebuild>
         <forcedrebuild>
