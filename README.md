@@ -23,10 +23,12 @@ is in [`src/FourQ_api.h`](src/FourQ_api.h).
 * [`src/random/`](src/random/): folder with pseudo-random generation function (ONLY FOR TESTING).
 * [`src/tests/`](src/tests/): test files for AVR.
 
-### IMPORTANT SECURITY NOTE
+### IMPORTANT SECURITY NOTES
 
 Random values are generated with `rand()`. This is NOT a cryptographically secure function.
 Users should replace this function with a cryptographically-secure PRNG (see [`random.c`](src/random/random.c)) .
+
+For the specific case of MSP430FRxxxx devices supporting FRAM technology we assume a default 8 MHz clock operation. If the MCU is overclocked to 16 MHz (maximum possible speed),e.g. the MSP430FR5969, then a cache is activated and SCA attacks may apply. Thus, we assume a maximum 8MHz operation to avoid those attacks.
 
 ### Complementary cryptographic functions
 
