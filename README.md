@@ -25,10 +25,10 @@ is in [`src/FourQ_api.h`](src/FourQ_api.h).
 
 ### IMPORTANT SECURITY NOTES
 
-Random values are generated with `rand()`. This is NOT a cryptographically secure function.
+* Random values are generated with `rand()`. This is NOT a cryptographically secure function.
 Users should replace this function with a cryptographically-secure PRNG (see [`random.c`](src/random/random.c)) .
 
-For the specific case of MSP430FRxxxx devices supporting FRAM technology we assume a default 8 MHz clock operation. If the MCU is overclocked to 16 MHz (maximum possible speed),e.g. the MSP430FR5969, then a cache is activated and SCA attacks may apply. Thus, we assume a maximum 8MHz operation to avoid those attacks.
+* For the specific case of MSP430FRxxxx devices supporting FRAM technology we assume a default 8MHz clock operation. If the MCU is overclocked to 16 MHz (maximum possible speed), e.g., on the MSP430FR5969, then a cache memory is activated and cache attacks may apply. For these cases, the implementation provides an option to use code that is secure against cache attacks (see `Instructions` below).
 
 ### Complementary cryptographic functions
 
@@ -51,9 +51,15 @@ Refer to [2] for the security requirements for the cryptographic hash function.
 
 Download the IAR Workbench for MSP430 (https://www.iar.com/iar-embedded-workbench/).
 
-Open the project file [`microFourQ-MSP.eww`](iar-ide/microFourQ-MSP.eww) and click on `Project > Rebuild All`.
+Open the project file [`microFourQ-MSP.eww`](iar-ide/microFourQ-MSP.eww) and compile by clicking on `Project > Rebuild All`.
 
 Project settings can be accessed and modified by going to `Project > Options...`. 
+
+When the software is ran at above 8MHz on MSP430FRxxxx devices, it MUST be configured without the option `_NO_CACHE_MEM_` to avoid
+cache attacks. Go to `Project > Options... > C/C++ Compiler > Preprocessor` and eliminate the `_NO_CACHE_MEM_` entry in the 
+"defined symbols" list. 
+Repeat this process for `eccp2.c` (right click on the file and then go to `Options... > C/C++ Compiler > Preprocessor`).
+Finally, proceed to rebuild.
 
 ## License
    
